@@ -1,5 +1,5 @@
 ---
- - name: crete users
+ - name: create users
    hosts: all
    become: yes
    remote_user: imene
