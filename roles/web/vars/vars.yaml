@@ -1,0 +1,4 @@
+apache_packages:
+  - php
+  - php-mysql
+  - httpd

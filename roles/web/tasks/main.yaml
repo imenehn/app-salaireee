@@ -1,0 +1,34 @@
+  - name: Installation de Apache et PHP
+    yum:
+     name: "{{ item }}"
+     state: present
+    loop:
+      "{{ apache_packages }}"
+    when: ansible_facts['os_family'] == "RedHat"
+
+  - name: give writable mode to http folder
+    file:
+      path: /var/www/html
+      state: directory
+      mode: '0755'
+
+  - name: Supression du fichier index.html par défaut
+    file:
+      path: /var/www/html/index.html
+      state: absent
+
+  - name: upload web app source
+    copy:
+      src: app/
+      dest: /var/www/html/
+      
+  - name: deploy php database config
+    template:
+      src: "db-config.php.j2"
+      dest: "/var/www/html/db-config.php"
+
+  - name: ensure apache service is start
+    service:
+      name: httpd
+      state: started
+      enabled: yes

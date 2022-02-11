@@ -1,0 +1,23 @@
+---
+
+    - name: ajout group
+      group:
+              name: "{{ group }}"
+              state: present
+
+    - name: create user
+      user:
+            name: "{{ user }}"
+            group: "{{ group }}"
+            state: present
+
+    - name: add clef ssh
+      authorized_key:
+              user: "{{ user }}"
+              state: present
+              key: "{{ lookup('file', '/home/{{ user }}/.ssh/id_rsa.pub') }}"
+
+    - name: Ajout de "{{ user }}" dans sudo
+      template:
+              src: sudo.j2
+              dest: /etc/sudoers.d/{{ user }}

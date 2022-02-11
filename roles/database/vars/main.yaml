@@ -1,0 +1,11 @@
+db_host: "db.hicham.form"
+webserver_host: "web.hicham.form"
+  
+mysql_dbname:
+  - 'dbsalaire'
+
+mysql_user:
+  - 'root'
+
+mysql_password:
+  - ''
