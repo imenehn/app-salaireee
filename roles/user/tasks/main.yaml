@@ -15,7 +15,7 @@
       authorized_key:
               user: "{{ user }}"
               state: present
-              key: "{{ lookup('file', '/home/{{ user }}/.ssh/id_rsa.pub') }}"
+              key: "{{ lookup('file', '/root/{{ user }}/.ssh/id_rsa.pub') }}"
 
     - name: Ajout de "{{ user }}" dans sudo
       template:
