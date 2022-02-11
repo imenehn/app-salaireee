@@ -2,7 +2,7 @@
  - name: crete users
    hosts: all
    become: yes
-   remote_user: hicham
+   remote_user: imene
    roles:
      - user
   #Apache 
