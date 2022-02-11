@@ -10,7 +10,7 @@
    hosts: webservers
    roles:
     - web
-   #Dtabase
+   #Database
  - name: install DataBase
    hosts: db
    roles:
